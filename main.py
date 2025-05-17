@@ -3,7 +3,20 @@ import os
 
 list = []
 def adcItm():
-    list.append
+    os.system("cls")
+    print("================================")
+    print("|   DIGITE O ITEM PARA LISTA   |")
+    print("================================")
+    adicionar = input("> ")
+    list.append(adicionar)
+    pergunta = input("Deseja adicionar mais alguma coisa?").upper()
+    if pergunta == "SIM":
+        adcItm()
+    elif pergunta == "NAO" or "NÃO":
+        MenuInterativo()
+        
+    
+
 
 def MenuInterativo():
     os.system("cls")
@@ -15,6 +28,9 @@ def MenuInterativo():
     print("| 4. para sair             |")
     print("============================")
     resposta = int(input("Digite a opção desejada: "))
+    if resposta == 1:
+        adcItm()
+    
 
 
 def iniciar():
