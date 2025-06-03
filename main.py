@@ -1,6 +1,7 @@
 ## Programa para listagem de compras do mercado 
 import os
 
+
 list = []
 def adcItm():
     os.system("cls")
@@ -15,6 +16,22 @@ def adcItm():
     elif pergunta == "NAO" or "NÃO":
         MenuInterativo()
         
+def showlist():
+    os.system("cls")
+    print("============================")
+    print("|         Lista            |")
+    print("============================")
+    for i in list:
+        print("|",i)
+        
+    print("============================") 
+    voltar = int (input("Voltar para o menu (1) ou 3 para sair! "))
+    if voltar == 1:
+        MenuInterativo()
+    elif voltar == 3:
+        print("obrigado por participar do projeto!")
+    else:
+        showlist()
     
 
 
@@ -30,10 +47,13 @@ def MenuInterativo():
     resposta = int(input("Digite a opção desejada: "))
     if resposta == 1:
         adcItm()
+    elif resposta == 2:
+        showlist()
     
 
 
 def iniciar():
+    os.system("cls")
     print("==================================")
     print("|       LISTA DE COMPRAS         |")
     print("==================================")
