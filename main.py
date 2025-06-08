@@ -30,9 +30,9 @@ def showlist(): ## Ainda faltam alguns ajustes, Tem erro quando puxa a funcao
     print("|         Lista            |")
     print("============================")
     for nome, qtd in zip(nomes,quantity):
-        print(f"{nome}: {qtd}")
-        print("============================") 
-        voltar = int (input("Voltar para o menu (1) ou 3 para sair! "))
+            print(f"{nome}: {qtd}")
+            print("============================") 
+    voltar = int (input("Voltar para o menu (1) ou 3 para sair! "))
     if voltar == 1:
         MenuInterativo()
     elif voltar == 3:
