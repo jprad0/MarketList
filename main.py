@@ -24,7 +24,7 @@ def adcItm():
         print("Opção inválida, retornando ao menu.")   
         MenuInterativo()
              
-def showlist(): ## Ainda faltam alguns ajustes, Tem erro quando puxa a funcao 
+def showlist(): 
     os.system("cls" if os.name == "nt" else "clear")
     print("============================")
     print("|         Lista            |")
