@@ -2,8 +2,18 @@
 import os
 
 
-nomes = []
+
+# adicionar um preço ficticio 
+
+
+# Tambem realizar a criação de um sistema de saldo para assim efetuar compras
+
+
+
+name = []
 quantity = []
+price = []
+
 
 def adcItm():
     os.system("cls" if os.name == "nt" else "clear")
@@ -11,9 +21,11 @@ def adcItm():
     print("|   DIGITE O ITEM PARA LISTA   |")
     print("================================")
     adicionar = input("> ")
-    nomes.append(adicionar)
-    adcQ = input("Digite a quantidade> ")
+    name.append(adicionar)
+    adcQ = int(input("Digite a quantidade> "))
     quantity.append(adcQ)
+    adcPrice = float(input("Digite o preço: $"))
+    price.append(adcPrice)
     
     pergunta = input("Deseja adicionar mais alguma coisa? ").upper()
     if pergunta == "SIM":
@@ -29,12 +41,14 @@ def showlist():
     print("============================")
     print("|         Lista            |")
     print("============================")
-    for nome, qtd in zip(nomes,quantity):
-            print(f"{nome}: {qtd}")
+    for nome, qtd, prc in zip(name,quantity,price):
+            print(f"{nome}: {qtd} : ${prc*qtd}")
             print("============================") 
-    voltar = int (input("Voltar para o menu (1) ou 3 para sair! "))
+    voltar = int (input("Voltar para o menu (1), (2) para somar compras ou 3 para sair! "))
     if voltar == 1:
         MenuInterativo()
+    elif voltar == 2:
+        somaTotal()
     elif voltar == 3:
         print("obrigado por participar do projeto!")
     else:
@@ -64,18 +78,40 @@ def MenuInterativo():
     else:
         print("Opção inválida.")
         MenuInterativo()
+        
+def somaTotal():
+    os.system("cls" if os.name == "nt" else "clear")
+    total = 0
+    print("============================")
+    print("|         TOTAL            |")
+    print("============================")
+    for qtd, prc in zip(quantity,price):
+        total += prc * qtd
+    print(f"TOTAL : ${total}")
+    print("============================") 
+    voltar = int (input("Voltar para o menu (1), (2) para somar compras ou 3 para sair! "))
+    if voltar == 1:
+        MenuInterativo()
+    elif voltar == 3:
+        print("obrigado por participar do projeto!")
+    else:
+        print("Opção inválida, retornando à lista.")
+        showlist()
+    
+        
+      
     
 def removerItem():
     os.system("cls" if os.name == "nt" else "clear")
     print("============================")
     print("|    REMOVER UM ITEM       |")
     print("============================")
-    for i, nome in enumerate(nomes):
+    for i, nome in enumerate(name):
         print(f"{i + 1}. {nome} ({quantity[i]})")
     try:
         indice = int(input("Digite o número do item para remover: ")) - 1
-        if 0 <= indice < len(nomes):
-            nomes.pop(indice)
+        if 0 <= indice < len(name):
+            name.pop(indice)
             quantity.pop(indice)
             print("Item removido com sucesso.")
         else:
